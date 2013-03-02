@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Keyboard</title>
+  </head>
+  <body>
+    <ul id="mods"></ul>
+    <div id="bind"></div>
+    <textarea onclick="alert(getCaretPosition(area))"></textarea>
+    <script src="Keyboard.js"></script>
+
+
+<script>
+var keyboard = new Keyboard(window);
+
+var activeElem = document.activeElement;
+var keyPress = function(){
+var key = "";
+keyboard.on('*', function(e){
+key = e.name;
+//console.log(key);
+activeElem.value = key;
+});
+return key;
+}
+
+var text = "";
+var keyPressed = "";
+var escapeSequence = ["Escape","Ctrl+C"];
+var area=document.getElementsByTagName("textarea")[0];
+var activeElem = document.activeElement;
+var insertMode = false;
+var insertKeys = ["I"];
+var navigationKeys = {
+	up:"k",
+	down:"j",
+	left:"h",
+	right:"l"
+};
+
+/************** Function definitions ******************/
+var search = function(toSearch, Area, Coursor_pos ) {//search and highlight text
+	var pos = Area.value.slice(Coursor_pos).search(toSearch);
+
+	var initial_pos =Coursor_pos + pos
+	var end_pos = initial_pos + toSearch.length;
+	area.setSelectionRange(initial_pos, end_pos);
+	str_len = end_pos - initial_pos;
+	if(pos == 0)
+	{
+		initial_pos = Area.value.search(toSearch);
+		end_pos = initial_pos + toSearch.length;
+	}
+	return end_pos ;
+};	
+
+function getCaretPosition(editableDiv) {
+    var caretPos = 0, containerEl = null, sel, range;
+    if (window.getSelection) {
+        sel = window.getSelection();
+        if (sel.rangeCount) {
+            range = sel.getRangeAt(0);
+            if (range.commonAncestorContainer.parentNode == editableDiv) {
+                caretPos = range.endOffset;
+            }
+        }
+    } else if (document.selection && document.selection.createRange) {
+        range = document.selection.createRange();
+        if (range.parentElement() == editableDiv) {
+            var tempEl = document.createElement("span");
+            editableDiv.insertBefore(tempEl, editableDiv.firstChild);
+            var tempRange = range.duplicate();
+            tempRange.moveToElementText(tempEl);
+            tempRange.setEndPoint("EndToEnd", range);
+            caretPos = tempRange.text.length;
+        }
+    }
+    return caretPos;
+}
+
+function setCaretPosition(elemId, caretPos) {
+    var elem = document.getElementById(elemId);
+
+    if(elem != null) {
+        if(elem.createTextRange) {
+            var range = elem.createTextRange();
+            range.move('character', caretPos);
+            range.select();
+        }
+        else {
+            if(elem.selectionStart) {
+                elem.focus();
+                elem.setSelectionRange(caretPos, caretPos);
+            }
+            else
+                elem.focus();
+        }
+    }
+}
+
+var replaceChar = function(replace_with, Area, Coursor_pos){
+	text = Area.value;
+	before = text.slice(0, Coursor_pos);
+	after = text.slice(Coursor_pos + 1);
+	text = before + replace_with + after;
+	Area.value = text;
+       return text.length;	
+};
+
+
+
+/************* Function definitions end ***************/
+/*******Testing code**********/
+area.value =  "This value has a value: Yahoo HackU";
+search("has", area, 0);
+//replaceChar( 'x', area, 3);
+console.log(keyPress());
+setCaretPosition(area, 8);
+alert(getCaretPosition(area));
+</script>
+  </body>
+</html>
