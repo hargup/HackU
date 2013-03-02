@@ -6,7 +6,7 @@
 	</head>
 	<body>
 		
-		<textarea id="hello" cols=30> Hello my name is Vivek Rai. ! </textarea>
+		<textarea id="hello"> Hello my name is Vivek Rai. ! </textarea>
 		<textarea id="hello1"> Hello my name is Vivek Rai. ! </textarea>
 		<textarea id="hello2"> Hello my name is Vivek Rai. ! </textarea>
 	</body>
@@ -18,65 +18,46 @@
 	</script>
 <script>
 	var insertMode = new Boolean(); //Default false value!
-	var replaceMode = false;
-	var ReplaceMode = false;
-	
-	var del = function(area, pos){
-	text = area.value;
-	var before = text.slice(0, pos);
-	var after = text.slice(pos + 1);
-	text = before + after;
-	area.value = text ;
-	setCaretPosition(area, pos);
-	};
-
-	var append = function(area, character, pos);
-
 	insertMode = false;
 	function captureKeys (event){
+            		var iD = document.activeElement.id;
+					var newID = document.getElementById(iD);
             var chCode = event.which || event.keyCode;
             if (chCode == 0)
-            	chCode = event.keyCode; 
+            	chCode = event.keyCode; //('charCode' in event) ? event.charCode : //
 /////// Event for handling EDIT Mode
             if (chCode==105 && insertMode != true) {
-		if(replaceMode != true){
-            	insertMode = !insertMode;
-		return false;
-            }
+				newID.setAttribute('style','background:#001;color:#fff')
 
+            	insertMode = !insertMode;
+            }
             else if (insertMode == true && chCode!=27){
             	console.log('yes1');
             		//console.log(toReturn);
             	return (chCode);
             } else if (chCode==27) {
             	insertMode = false;
-		return false;
+            	newID.setAttribute('style','background:#FFFFFF')
             }
             else {
-            	var iD = document.activeElement.id;
-            	var area = document.getElementById(iD);
-            	var pos = doGetCaretPosition(area);
-		if (chCode == 114) { console.log("replace mode enter");
-		//	del(area, pos);
-		};
-		if (chCode == 120) { console.log(pos);
-			del(area, pos);
-		console.log(text);
-		};
+            	
+            	style="" 
+            	var newID = document.getElementById(iD);
+            	var pos = doGetCaretPosition(newID);
             	if (chCode == 104) { console.log(pos);
-            		setCaretPosition(area, pos-1);
+            		setCaretPosition(newID, pos-1);
 					};
-				if (chCode == 106) {//var pos = doGetCaretPosition(area);
-            		setCaretPosition(area, pos+area.cols);
-            		//console.log(pos); console.log(area.cols)
+				if (chCode == 106) {//var pos = doGetCaretPosition(newID);
+            		setCaretPosition(newID, pos+newID.cols);
+            		//console.log(pos); console.log(newID.cols)
             		};
-				if (chCode == 107) {//var pos = doGetCaretPosition(area);
+				if (chCode == 107) {//var pos = doGetCaretPosition(newID);
 					//console.log
-            		setCaretPosition(area, pos-area.cols);
+            		setCaretPosition(newID, pos-newID.cols);
             		//console.log(pos);
             		};
-				if (chCode == 108) //var pos = doGetCaretPosition(area);
-            		setCaretPosition(area, pos+1);
+				if (chCode == 108) //var pos = doGetCaretPosition(newID);
+            		setCaretPosition(newID, pos+1);
             		}
 
             return false;
