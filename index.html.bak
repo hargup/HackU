@@ -18,32 +18,53 @@
 	</script>
 <script>
 	var insertMode = new Boolean(); //Default false value!
-	
-	var del = function(area, pos){
+	insertMode = false;
+	var replaceMode = false;
+        var ReplaceMode = false; //This is continous replace mode	
+var replaceChar = function(replace_with, Area, Coursor_pos){
+	text = Area.value;
+	before = text.slice(0, Coursor_pos);
+	after = text.slice(Coursor_pos + 1);
+	text = before + replace_with + after;
+	Area.value = text;
+       return text.length;	
+};
+
+var delete(area, pos){
 	text = area.value;
 	var before = text.slice(0, pos);
-	var after = text.slice(pos + 1);
+	var after = text.slice(pos+1 );
 	text = before + after;
 	area.value = text ;
 	setCaretPosition(area, pos);
-	};
+};
+		
 
-	insertMode = false;
 	function captureKeys (event){
             var chCode = event.which || event.keyCode;
             if (chCode == 0)
             	chCode = event.keyCode; //('charCode' in event) ? event.charCode : //
 /////// Event for handling EDIT Mode
-            if (chCode==105 && insertMode != true) {
+            if (chCode==105 && (insertMode != true)) {
+		if(replaceMode !=true)
+		{
             	insertMode = !insertMode;
 		return false;
+	};
             }
-            else if (insertMode == true && chCode!=27){
-            	console.log('yes1');
+            else if (&& chCode!=27){
+		    if(insertMode == true ){
+            	console.log('inserted');
             		//console.log(toReturn);
             	return (chCode);
+	};
+	else if(replaceMode == true){
+		console.log('replaced');
+		return (chCode);
+	};
             } else if (chCode==27) {
             	insertMode = false;
+		replaceMode = false;
 		return false;
             }
             else {
@@ -51,9 +72,15 @@
             	var area = document.getElementById(iD);
             	var pos = doGetCaretPosition(area);
 		if (chCode == 120) { console.log(pos);
-			del(area, pos);
+			delete(area, pos);
 		console.log(text);
 		};
+
+		if(chCode == 114) { console.log(replaceMode);
+			replaceMode = true;
+			return false;
+		};
+
             	if (chCode == 104) { console.log(pos);
             		setCaretPosition(area, pos-1);
 					};
