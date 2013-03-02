@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+  <head>
+		<title> Hello World! Hi Vi-Text!</title>
+		<script src="Keyboard.js" type="text/javascript"></script> 
+    	<script src="bindings.js" type="text/javascript"></script> 
+	</head>
+	<body>
+		
+		<textarea id="hello"> Hello my name is Vivek Rai. ! </textarea>
+		<textarea id="hello1"> Hello my name is Vivek Rai. ! </textarea>
+		<textarea id="hello2"> Hello my name is Vivek Rai. ! </textarea>
+	</body>
+	<script>
+		var e = document.getElementsByTagName('textarea');
+		for (var i=0;i<e.length;i++)
+			e[i].setAttribute('onkeypress','return captureKeys(event);')
+
+	</script>
+<script>
+	var insertMode = new Boolean(); //Default false value!
+	insertMode = false;
+	function captureKeys (event){
+            var chCode = event.which || event.keyCode;
+            if (chCode == 0)
+            	chCode = event.keyCode; //('charCode' in event) ? event.charCode : //
+            console.log(chCode);
+            
+            if (chCode==105 && insertMode != true) {
+            	console.log('done');
+            	insertMode = !insertMode;
+            }
+            else if (insertMode == true && chCode!=27){
+            	return (chCode);
+            }
+            if (chCode==27) {
+            console.log(insertMode);
+            	insertMode = false;
+            }
+            return false;
+        }
+	</script>
+</html>
