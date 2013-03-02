@@ -18,6 +18,8 @@
 	</script>
 <script>
 	var insertMode = new Boolean(); //Default false value!
+	var replaceMode = false;
+	var ReplaceMode = false;
 	
 	var del = function(area, pos){
 	text = area.value;
@@ -28,16 +30,20 @@
 	setCaretPosition(area, pos);
 	};
 
+	var append = function(area, character, pos);
+
 	insertMode = false;
 	function captureKeys (event){
             var chCode = event.which || event.keyCode;
             if (chCode == 0)
-            	chCode = event.keyCode; //('charCode' in event) ? event.charCode : //
+            	chCode = event.keyCode; 
 /////// Event for handling EDIT Mode
             if (chCode==105 && insertMode != true) {
+		if(replaceMode != true){
             	insertMode = !insertMode;
 		return false;
             }
+
             else if (insertMode == true && chCode!=27){
             	console.log('yes1');
             		//console.log(toReturn);
@@ -50,6 +56,9 @@
             	var iD = document.activeElement.id;
             	var area = document.getElementById(iD);
             	var pos = doGetCaretPosition(area);
+		if (chCode == 114) { console.log("replace mode enter");
+		//	del(area, pos);
+		};
 		if (chCode == 120) { console.log(pos);
 			del(area, pos);
 		console.log(text);
