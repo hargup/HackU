@@ -24,24 +24,19 @@ var modifiers = {
 
 var names = {};
 var text = "";
+var keyPressed = "";
 var area=document.getElementsByTagName("textarea")[0];
-area.value="This is the value";
-
-Object.keys(modifiers).forEach(function(key){
-  var mod = modifiers[key];
-  if (mod in names) {
-    modifiers[key] = names[mod];
-  } else {
-    var el = names[mod] = modifiers[key] = document.createElement('li');
-    el.textContent = mod;
-    el.id = mod;
-    mods.appendChild(el);
-  }
-});
+var insertMode = false;
+var insertKeys = ["I"];
+var navigationKeys = {
+	up:"k",
+	down:"j",
+	left:"h",
+	right:"l"
+};
 
 
 var engaged = {};
-
 
 keyboard.on('*', function(e){
   if (e.action === 'activate') {
@@ -49,7 +44,33 @@ keyboard.on('*', function(e){
       modifiers[e.name].className = 'active';
     } else {
       engaged[e.name] = true;
-      bind.textContent = Object.keys(engaged).join(' · ');
+      keyPressed = Object.keys(engaged);
+      if(insertMode === false ) 
+      {
+	      console.log(insertKeys);
+	      console.log(keyPressed);
+	      if(keyPressed[0] === insertKeys[0])
+	      {
+	      insertMode = true;
+	      console.log("InsertKeys" + keyPressed);
+      }
+}
+	else
+	{
+	keyboard.on( "Ctrl+C" , "activate" , function(e){ insertMode = false ;});
+        keyboard.on( "Escape" , "activate" , function(e){ insertMode = false ;});
+
+	if(keyPressed.length == 1 && keyPressed[0] == "Ecape")
+	{
+		insertMode = false;
+	}
+	else
+	{
+      text=text+keyPressed;
+      area.value=text;
+      }
+      }
+
     }
   } else if (e.action === 'release') {
     if (e.name in modifiers) {
@@ -57,8 +78,6 @@ keyboard.on('*', function(e){
     } else {
       delete engaged[e.name];
       bind.textContent = Object.keys(engaged).join(' · ');
-      text=text+Object.keys(engaged);
-      area.value=text;
     }
   }
 });
