@@ -25,7 +25,9 @@ var modifiers = {
 var names = {};
 var text = "";
 var keyPressed = "";
+var escapeSequence = ["Escape","Ctrl+C"];
 var area=document.getElementsByTagName("textarea")[0];
+var activeElem = document.activeElement;
 var insertMode = false;
 var insertKeys = ["I"];
 var navigationKeys = {
@@ -82,13 +84,7 @@ keyboard.on('*', function(e){
   }
 });
 
-window.addEventListener('blur', function(e){
-  engaged = {};
-  bind.textContent = '';
-  for (var k in modifiers) {
-    modifiers[k].className = '';
-  }
-});
+
 </script>
   </body>
 </html>
