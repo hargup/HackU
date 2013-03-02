@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-  <head>
+	<head>
 		<title> Hello World! Hi Vi-Text!</title>
 		<script src="Keyboard.js" type="text/javascript"></script> 
     	<script src="bindings.js" type="text/javascript"></script> 
@@ -17,25 +17,74 @@
 
 	</script>
 <script>
-	var insertMode = false; 
+	var insertMode = new Boolean(); //Default false value!
+	insertMode = false;
 	function captureKeys (event){
             var chCode = event.which || event.keyCode;
             if (chCode == 0)
             	chCode = event.keyCode; //('charCode' in event) ? event.charCode : //
-            console.log(chCode);
-            
+/////// Event for handling EDIT Mode
             if (chCode==105 && insertMode != true) {
-            	console.log('done');
             	insertMode = !insertMode;
             }
             else if (insertMode == true && chCode!=27){
+            	console.log('yes1');
+            		//console.log(toReturn);
             	return (chCode);
-            }
-            if (chCode==27) {
-            console.log(insertMode);
+            } else if (chCode==27) {
             	insertMode = false;
             }
+            else {
+            	var iD = document.activeElement.id;
+            	var newID = document.getElementById(iD);
+            	var pos = doGetCaretPosition(newID);
+            	if (chCode == 104) { console.log(pos);
+            		setCaretPosition(newID, pos-1);
+					};
+				if (chCode == 106) {//var pos = doGetCaretPosition(newID);
+            		setCaretPosition(newID, pos+newID.cols);
+            		//console.log(pos); console.log(newID.cols)
+            		};
+				if (chCode == 107) {//var pos = doGetCaretPosition(newID);
+					//console.log
+            		setCaretPosition(newID, pos-newID.cols);
+            		//console.log(pos);
+            		};
+				if (chCode == 108) //var pos = doGetCaretPosition(newID);
+            		setCaretPosition(newID, pos+1);
+            		}
+
             return false;
-        }
+            }
+///////////////////////////////////////////
+
+function doGetCaretPosition (ctrl) {
+	var CaretPos = 0;	// IE Support
+	if (document.selection) {
+	ctrl.focus ();
+		var Sel = document.selection.createRange ();
+		Sel.moveStart ('character', -ctrl.value.length);
+		CaretPos = Sel.text.length;
+	}
+	// Firefox support
+	else if (ctrl.selectionStart || ctrl.selectionStart == '0')
+		CaretPos = ctrl.selectionStart;
+	return (CaretPos);
+}
+function setCaretPosition(ctrl, pos){
+	if(ctrl.setSelectionRange)
+	{
+		ctrl.focus();
+		ctrl.setSelectionRange(pos,pos);
+	}
+	else if (ctrl.createTextRange) {
+		var range = ctrl.createTextRange();
+		range.collapse(true);
+		range.moveEnd('character', pos);
+		range.moveStart('character', pos);
+		range.select();
+	}
+}
+
 	</script>
 </html>
