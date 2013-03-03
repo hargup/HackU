@@ -11,7 +11,8 @@ Click the text area, enter into a special insert mode of VIM and there you go ed
 Why Vi-Text?
 -------------
         1. The biggest advantage of it is the time it SAVES once you have a little to moderate hands on experience with
-        real Vim Editor. Just bug your hands on the keyboard and get going. (PS. If you don't know what ViM is, ask any ViM user about its love for 'hjkl' )
+        real Vim Editor. Just bug your hands on the keyboard and get going. (PS. If you don't know what ViM is, 
+        ask any ViM user about its love for 'hjkl' )
         2. It could be customized and extended. 
         
 What makes our Vi - Text different? - 
