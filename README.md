@@ -1,7 +1,8 @@
  Yahoo HackU! 2013 - IIT Kharagpur 
 ------------------------------------
 
-=Vi - Text=
+Vi - Text
+---------
 
  
 Vi - Text brings to you the powerful and robust features of classic VIM editor at your fingertips. Edit text areas throughout the websites seamlessly without the hassle of switching between the Mouse and Keyboard repeatedly. 
