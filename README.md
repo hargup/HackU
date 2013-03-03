@@ -24,8 +24,19 @@ Well, It is the only of its kind which can allow you to directly edit the text a
 What more can be done? - Since, VIM works on a different API, it is not possible to match the exact features, however those which can be have been implemented.
 
 Limitations as of now - 
------------------------
+------------------------
 
         1. Doesn't map all of the features of real ViM as of now but will be implemented shortly.
         2. Has not been ported in form of a plugin or addon. It executes as an userscript through Greasemonkey.
-        2. and some minor UI improvements that can be made.
+        3. and some minor UI improvements that can be made.
+        
+BUT......
+------------
+
+        1. The concept can be further enhanced to include 'accessibility feature' and Mock object which can help many
+        users to communicate to their pcs using simple gestures.
+        2. It can serve well when employed to Blogs, Wikipedia, Extensive Editorial houses.
+        3. and many more to follow ....
+        
+        
+:) :) It's just s start!
