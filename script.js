@@ -69,21 +69,18 @@ var ReplaceMode = false;
 unsafeWindow.captureKeys=function (event){
 
 var newID = event.target;
-             var pos = getCaretPosition(newID);
-
+var pos = getCaretPosition(newID);
              
             var chCode = event.which || event.keyCode;
             if (chCode == 0)
              chCode = event.keyCode; 
             console.log(chCode);
             
-            if (chCode==105 ) { //i keyPress
-			if(insertMode !=true && replaceMode != true)
-			{
+            if (chCode==105 &&(insertMode !=true && replaceMode != true) ) { //i keyPress			
              newID.setAttribute('style','background:#001;color:#fff');
              console.log('done');
              insertMode = !insertMode;
-			 };
+			 
             }
             else if ((insertMode == true || replaceMode == true) && chCode!=27){
 			if(replaceMode == true)
@@ -105,6 +102,7 @@ var newID = event.target;
            {
             // var newID = document.getElementById(iD);
              console.log("Entering last if loop");
+             
              console.log("making var ");
 			 if (chCode == 114) { console.log("replace mode enter");
 			replaceMode = true;
