@@ -1,19 +1,9 @@
-======================================
-======================================
-== Yahoo HackU! 2013 - IIT Kharagpur =
-======================================
-======================================
 
-         _________           _________ _______          _________
-|\     /|\__   __/           \__   __/(  ____ \|\     /|\__   __/
-| )   ( |   ) (                 ) (   | (    \/( \   / )   ) (   
-| |   | |   | |      _____      | |   | (__     \ (_) /    | |   
-( (   ) )   | |     (_____)     | |   |  __)     ) _ (     | |   
- \ \_/ /    | |                 | |   | (       / ( ) \    | |   
-  \   /  ___) (___              | |   | (____/\( /   \ )   | |   
-   \_/   \_______/              )_(   (_______/|/     \|   )_( 
-   
-   ----------------------------------------------------------
+= Yahoo HackU! 2013 - IIT Kharagpur =
+--------------------------------------
+
+==Vi - Text==
+
  
 Vi - Text brings to you the powerful and robust features of classic VIM editor at your fingertips. Edit text areas throughout the websites seamlessly without the hassle of switching between the Mouse and Keyboard repeatedly. 
 Click the text area, enter into a special insert mode of VIM and there you go editing with tons of embedded features.
