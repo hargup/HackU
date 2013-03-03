@@ -14,6 +14,9 @@ Why Vi-Text?
         real Vim Editor. Just bug your hands on the keyboard and get going. (PS. If you don't know what ViM is, 
         ask any ViM user about its love for 'hjkl' )
         2. It could be customized and extended. 
+        3. Our Target USERBASE are those people who have to do lots of writing and editing online and are ready to 
+        learn a new experience. It's worth while saving huge time investment compared to what spend in learning Vi - Text
+        or ViM.
         
 What makes our Vi - Text different? - 
 --------------------------------------
