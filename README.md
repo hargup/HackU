@@ -24,7 +24,7 @@ Well, It is the only of its kind which can allow you to directly edit the text a
 What more can be done? - Since, VIM works on a different API, it is not possible to match the exact features, however those which can be have been implemented.
 
 Limitations as of now - 
-------------------------
+-----------------------
 
         1. Doesn't map all of the features of real ViM as of now but will be implemented shortly.
         2. Has not been ported in form of a plugin or addon. It executes as an userscript through Greasemonkey.
