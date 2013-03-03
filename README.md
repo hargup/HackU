@@ -20,7 +20,7 @@ What makes our Vi - Text different? -
 Well, It is the only of its kind which can allow you to directly edit the text area through the popular websites like Yahoo! Answers, Facebook, Google docs, Forums without opening any external editor or dependencies and harnesses the power of VIM.
 What more can be done? - Since, VIM works on a different API, it is not possible to match the exact features, however those which can be have been implemented.
 
-Limitations as of now :- 
+Limitations as of now - 
 ------------------------
 
         1. Doesn't map all of the features of real ViM as of now but will be implemented shortly.
