@@ -1,5 +1,3 @@
-
-
 function getCaretPosition(ctrl) {
 
 console.log("Entering the function get caaret");
@@ -30,7 +28,7 @@ function setCaretPosition(ctrl, pos){
 	}
 }
 
-function del(area, pos){
+function del(area, pos) {
 text = area.value;
 var before = text.slice(0, pos);
 var after = text.slice(pos + 1);
